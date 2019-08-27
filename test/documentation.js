@@ -1,9 +1,3 @@
-// const MockServerClient = require('../index');
-// const header = require('../queries/header');
-// const body = require('../queries/body');
-// const path = require('../queries/path');
-// const responses = require('../responses');
-
 const MockServerClient = require('../index');
 const { path } = require('../queries');
 const responses = require('../responses');

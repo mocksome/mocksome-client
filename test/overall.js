@@ -21,7 +21,7 @@ describe('overall', () => {
     const client = new MockServerClient('http://localhost:8080');
 
     client.expectation()
-      // .with(header('x-test', 'value'))
+      .with(header('x-test', 'value'))
       .with(body.json.includes({ one: { two: 'hello' } }))
       .create();
   });
@@ -63,5 +63,11 @@ describe('overall', () => {
   it ('can create responses', async () => {
     const client = new MockServerClient('http://localhost:8080');
     await client.expectation().response(responses.json.created({ hello: 'goodbye' })).create();
-  })
+  });
+
+  it('can respond with a string', () => {
+    const client = new MockServerClient('http://localhost:8080');
+
+    client.expectation().with(header('x-test', 'value')).create();
+  });
 })

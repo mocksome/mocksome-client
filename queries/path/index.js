@@ -1,16 +1,10 @@
-const withParam = require('./with-param');
-
 module.exports = (path) => {
-  if (path === undefined) {
-    return {
-      withParam
-    }
+  return (req) => {
+    const obj = {
+      ...req,
+      path
+    };
+
+    return obj;
   }
-
-  const ret = {
-    ...req,
-    path
-  };
-
-  return ret;
-}
+};

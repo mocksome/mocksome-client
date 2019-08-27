@@ -4,16 +4,20 @@ const ExpectationCreator = require('./expectation-creator');
 const MockServerQueryable = require('./mockserver-queryable');
 
 class MockServerClient {
+  // todo: HTTP is the default, but could also allow a different transport to be 
+  //       passed into the constructor
   constructor(url) {
-    assert(url, 'url must be provided (MockServerClient');
+    assert(url, 'url must be provided to MockServerClient');
     this._url = url;
     this._transport = new MockServerHttp(url);
   }
-  
-  // todo: HTTP is the default, but could also allow a different transport to be 
-  //       passed into the constructor
 
-  _fetch() {
+  // TODO...
+  async _fetch(definition) {
+  }
+
+  // TODO...
+  async _verify(definition) {
   }
 
   async _create(definition) {
@@ -26,9 +30,12 @@ class MockServerClient {
     }
   }
 
+  // TODO...
+  verification() {
+    return new ExpectationCreator(this);
+  }
+
   requests() {
-    // this._queryable = new MockServerQueryable(this);
-    // return this._queryable;
     return new MockServerQueryable(this);
   }
 

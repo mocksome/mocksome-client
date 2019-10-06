@@ -1,3 +1,5 @@
+const debug = require('debug')('mocksome-client:expectation-creator');
+
 class ExpectationCreator {
   constructor(client) {
     this._client = client;
@@ -17,13 +19,11 @@ class ExpectationCreator {
 
   response(builder) {
     this._definition.response = builder(this._definition.response);
-
-    console.log(this._definition);
     return this;
   }
 
-  async create() {
-    this._client._create(this._definition);
+  create() {
+    return this._client._create(this._definition);
   }
 }
 

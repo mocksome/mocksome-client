@@ -1,11 +1,12 @@
 {
   "name": "mocksome-client",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive",
-    "test:watch": "npm test -- --watch"
+    "start-server": "node ../api/main.js",
+    "test:watch": "(cd ../api && npm start) & DEBUG=mocksome-client* npm test -- --watch"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,8 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "deep-diff": "^1.0.2",
     "mocha": "^6.2.0"
   }
 }

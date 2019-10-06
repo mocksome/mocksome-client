@@ -1,3 +1,4 @@
+const debug = require('debug')('mocksome-client:MockServerClient');
 const assert = require('assert');
 const MockServerHttp = require('./transport/mock-server-http');
 const ExpectationCreator = require('./expectation-creator');
@@ -21,13 +22,15 @@ class MockServerClient {
   }
 
   async _create(definition) {
+    debug('sending definition', definition);
     const result = await this._transport.record(definition);
+    return result;
     
-    if (result.isSuccess) {
-      return true;
-    } else {
-      throw new Exception('Could not create expectation');
-    }
+    // if (result.isSuccess) {
+    //   return true;
+    // } else {
+    //   throw new Exception('Could not create expectation');
+    // }
   }
 
   // TODO...

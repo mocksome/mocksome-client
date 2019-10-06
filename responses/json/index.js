@@ -1,7 +1,19 @@
-const created = require('./created');
-const ok = require('./ok');
+const createBuilder = (code) => {
+  return (body) => {
+    return (resp) => {
+      return {
+        headers: {
+          ...resp.headers,
+          'content-type': 'application/json'
+        },
+        statusCode: code,
+        body
+      }
+    }
+  }
+}
 
 module.exports = {
-  created,
-  ok
+  created: createBuilder(201),
+  ok: createBuilder(200)
 }
